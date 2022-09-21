@@ -11,6 +11,23 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import plot_confusion_matrix, plot_roc_curve, plot_precision_recall_curve
 import matplotlib.pyplot as plt
 le = LabelEncoder()
+from gsheetsdb import connect
+
+# Create a connection object.
+conn = connect()
+
+@st.cache(ttl=600)
+def run_query(query):
+    rows = conn.execute(query, headers=1)
+    rows = rows.fetchall()
+    return rows
+
+sheet_url = st.secrets["public_gsheets_url"]
+rows = run_query(f'SELECT * FROM "{sheet_url}"')
+
+# Print results.
+for row in rows:
+    st.write(f"{row.name} has a :{row.pet}:")
 
 pilih_menu = st.sidebar.selectbox("Navigasi" ,('Halaman Utama','Tentang Aplikasi'))
 

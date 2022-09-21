@@ -14,6 +14,7 @@ entrypoints==0.4
 fonttools==4.37.3
 gitdb==4.0.9
 GitPython==3.1.27
+gsheetsdb==0.1.13.1
 idna==3.4
 importlib-metadata==4.12.0
 Jinja2==3.1.2
