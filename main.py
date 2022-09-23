@@ -11,23 +11,34 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import plot_confusion_matrix, plot_roc_curve, plot_precision_recall_curve
 import matplotlib.pyplot as plt
 le = LabelEncoder()
-from gsheetsdb import connect
+# from gsheetsdb import connect
 
-# Create a connection object.
-conn = connect()
+# # Create a connection object.
+# conn = connect()
 
-@st.cache(ttl=600)
-def run_query(query):
-    rows = conn.execute(query, headers=1)
-    rows = rows.fetchall()
-    return rows
+# @st.cache(ttl=600)
+# def run_query(query):
+#     rows = conn.execute(query, headers=1)
+#     rows = rows.fetchall()
+#     return rows
 
-sheet_url = st.secrets["public_gsheets_url"]
-rows = run_query(f'SELECT * FROM "{sheet_url}"')
+# sheet_url = st.secrets["public_gsheets_url"]
+# rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-# Print results.
-for row in rows:
-    st.write(f"{row.name} has a :{row.pet}:")
+# # Print results.
+# for row in rows:
+#     st.write(f"{row.name} has a :{row.pet}:")
+
+
+#Style 
+st.markdown("""
+<style>
+.css-9s5bis.edgvbvh3 , .css-1q1n0ol.egzxvld0
+{
+    visibility:hidden;
+}
+</style>
+""",unsafe_allow_html=True)
 
 pilih_menu = st.sidebar.selectbox("Navigasi" ,('Halaman Utama','Tentang Aplikasi'))
 
